@@ -1,0 +1,27 @@
+Step 1: Update and install prerequisites
+	apt update && apt upgrade -y
+	apt install -y curl sudo
+Step 2: Create the developer user
+	useradd -s /bin/bash developer
+	chown -R developer:developer /home/developer
+	passwd developer
+	(Enter a password when prompted)
+Step 3: Give developer sudo privileges
+	echo "developer ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+Step 4: Install Node.js (required for Claude Code)
+	curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+	apt install -y nodejs
+Step 6: Install Claude Code as the developer user
+	su - developer -c "sudo npm install -g @anthropic-ai/claude-code"
+
+
+apt update && apt upgrade -y
+apt install -y curl sudo
+useradd -s /bin/bash developer
+chown -R developer:developer /home/developer
+passwd developer
+echo "developer ALL=(ALL) NOPASSWD:ALL" >> /etc/sudoers
+curl -fsSL https://deb.nodesource.com/setup_lts.x | bash -
+apt install -y nodejs
+su - developer -c "sudo npm install -g @anthropic-ai/claude-code"
+
