@@ -5,7 +5,7 @@
   IMAGE_NAME="ubuntu:latest"
   MOUNT_PATH_ON_HOST="$HOME/source"
   MOUNT_PATH_IN_CONTAINER="/home/developer/host"
-  USERNAME=developer
+  USERNAME=root
 
   # Check if the container exists
   CONTAINER_ID=$(docker ps -a -q -f name=$CONTAINER_NAME)
