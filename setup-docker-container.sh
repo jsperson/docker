@@ -10,6 +10,13 @@ set -e  # Exit on error
 DEVELOPER_USER="${DEVELOPER_USER:-developer}"
 DEVELOPER_PASSWORD="${DEVELOPER_PASSWORD:-developer}"
 NODE_VERSION="${NODE_VERSION:-lts}"
+LOG_FILE="/tmp/setup-docker-container-$(date +%Y%m%d-%H%M%S).log"
+
+# Redirect all output to both console and log file
+exec > >(tee -a "$LOG_FILE")
+exec 2>&1
+
+echo "Logging to: $LOG_FILE"
 
 # Color codes for output
 RED='\033[0;31m'
@@ -203,4 +210,7 @@ log_info "Or to start Claude Code:"
 log_info "  su - $DEVELOPER_USER -c 'claude-code'"
 log_info "Or to start Codex:"
 log_info "  su - $DEVELOPER_USER -c 'codex'"
+log_info "=========================================="
+log_info "Log file saved to: $LOG_FILE"
+log_info "To share for troubleshooting: cat $LOG_FILE"
 log_info "=========================================="
