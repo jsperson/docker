@@ -193,9 +193,9 @@ log_info "Created .bash_aliases"
 log_info "Step 9b: Creating claude_danger.sh script..."
 cat > "/home/$DEVELOPER_USER/bin/claude_danger.sh" <<'EOF'
 #!/bin/bash
-# Launch Claude Code with dangerously ignore permissions mode
+# Launch Claude Code with dangerously skip permissions mode
 # WARNING: This bypasses security checks - use only in trusted environments
-exec claude --dangerously-ignore-permissions "$@"
+exec claude --dangerously-skip-permissions "$@"
 EOF
 
 chown "$DEVELOPER_USER:$DEVELOPER_USER" "/home/$DEVELOPER_USER/bin/claude_danger.sh"
