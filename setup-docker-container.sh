@@ -207,8 +207,8 @@ log_info "Step 10: Copying startup scripts to home directory..."
 if [ -f "/home/$DEVELOPER_USER/source/docker/codex_startup.sh" ]; then
     cp "/home/$DEVELOPER_USER/source/docker/codex_startup.sh" "/home/$DEVELOPER_USER/"
     chown "$DEVELOPER_USER:$DEVELOPER_USER" "/home/$DEVELOPER_USER/codex_startup.sh"
-    chmod 755 "/home/$DEVELOPER_USER/codex_startup.sh"
-    log_info "Copied codex_startup.sh to ~/"
+    chmod 700 "/home/$DEVELOPER_USER/codex_startup.sh"
+    log_info "Copied codex_startup.sh to ~/ with 700 permissions"
 else
     log_warn "codex_startup.sh not found in ~/source/docker"
 fi
@@ -217,7 +217,7 @@ if [ -f "/home/$DEVELOPER_USER/bin/claude_danger.sh" ]; then
     cp "/home/$DEVELOPER_USER/bin/claude_danger.sh" "/home/$DEVELOPER_USER/"
     chown "$DEVELOPER_USER:$DEVELOPER_USER" "/home/$DEVELOPER_USER/claude_danger.sh"
     chmod 700 "/home/$DEVELOPER_USER/claude_danger.sh"
-    log_info "Copied claude_danger.sh to ~/"
+    log_info "Copied claude_danger.sh to ~/ with 700 permissions"
 else
     log_warn "claude_danger.sh not found in ~/bin"
 fi
