@@ -148,7 +148,8 @@ fi
 log_info "Step 7: Configuring git defaults..."
 su - "$DEVELOPER_USER" -c "git config --global init.defaultBranch main" || true
 su - "$DEVELOPER_USER" -c "git config --global pull.rebase false" || true
-log_info "Git configuration complete"
+su - "$DEVELOPER_USER" -c "git config --global credential.helper store" || true
+log_info "Git configuration complete (credentials will be stored in ~/.git-credentials)"
 
 # Step 8: Create useful directory structure
 log_info "Step 8: Creating directory structure..."
