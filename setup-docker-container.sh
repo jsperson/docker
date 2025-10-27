@@ -80,7 +80,7 @@ if [ ! -d "/home/$DEVELOPER_USER" ]; then
     log_info "Created home directory for '$DEVELOPER_USER'"
 fi
 
-chown -R "$DEVELOPER_USER:$DEVELOPER_USER" "/home/$DEVELOPER_USER"
+chown "$DEVELOPER_USER:$DEVELOPER_USER" "/home/$DEVELOPER_USER"
 log_info "Set permissions on home directory"
 
 # Set password for developer user
