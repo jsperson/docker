@@ -127,8 +127,8 @@ fi
 log_info "Step 6: Installing Claude Code and Codex..."
 
 # Install Claude Code
-if command -v claude-code &> /dev/null; then
-    CURRENT_CLAUDE=$(su - "$DEVELOPER_USER" -c "claude-code --version" 2>/dev/null || echo "unknown")
+if command -v claude &> /dev/null; then
+    CURRENT_CLAUDE=$(su - "$DEVELOPER_USER" -c "claude --version" 2>/dev/null || echo "unknown")
     log_warn "Claude Code already installed: $CURRENT_CLAUDE"
 else
     npm install -g @anthropic-ai/claude-code
@@ -195,7 +195,7 @@ cat > "/home/$DEVELOPER_USER/bin/claude_danger.sh" <<'EOF'
 #!/bin/bash
 # Launch Claude Code with dangerously ignore permissions mode
 # WARNING: This bypasses security checks - use only in trusted environments
-exec claude-code --dangerously-ignore-permissions "$@"
+exec claude --dangerously-ignore-permissions "$@"
 EOF
 
 chown "$DEVELOPER_USER:$DEVELOPER_USER" "/home/$DEVELOPER_USER/bin/claude_danger.sh"
@@ -215,13 +215,13 @@ log_info "  User: $DEVELOPER_USER"
 log_info "  Password: $DEVELOPER_PASSWORD"
 log_info "  Node.js: $(node --version)"
 log_info "  npm: $(npm --version)"
-log_info "  Claude Code: $(command -v claude-code &> /dev/null && echo 'Installed' || echo 'Not installed')"
+log_info "  Claude Code: $(command -v claude &> /dev/null && echo 'Installed' || echo 'Not installed')"
 log_info "  Codex: $(command -v codex &> /dev/null && echo 'Installed' || echo 'Not installed')"
 log_info "=========================================="
 log_info "To switch to developer user, run:"
 log_info "  su - $DEVELOPER_USER"
 log_info "Or to start Claude Code:"
-log_info "  su - $DEVELOPER_USER -c 'claude-code'"
+log_info "  su - $DEVELOPER_USER -c 'claude'"
 log_info "Or to start Codex:"
 log_info "  su - $DEVELOPER_USER -c 'codex'"
 log_info "=========================================="
