@@ -25,6 +25,10 @@ if [ -z "$CONTAINER_ID" ]; then
     # Build port mappings
     PORT_ARGS=""
     for port in $PORTS; do
+        # If port doesn't contain ':', map it to itself (e.g., 8080 -> 8080:8080)
+        if [[ "$port" != *":"* ]]; then
+            port="$port:$port"
+        fi
         PORT_ARGS="$PORT_ARGS -p $port"
     done
 
