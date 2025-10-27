@@ -188,6 +188,19 @@ EOF
 chown "$DEVELOPER_USER:$DEVELOPER_USER" "/home/$DEVELOPER_USER/.bash_aliases"
 log_info "Created .bash_aliases"
 
+# Step 9b: Create claude_danger.sh script
+log_info "Step 9b: Creating claude_danger.sh script..."
+cat > "/home/$DEVELOPER_USER/bin/claude_danger.sh" <<'EOF'
+#!/bin/bash
+# Launch Claude Code with dangerously ignore permissions mode
+# WARNING: This bypasses security checks - use only in trusted environments
+exec claude-code --dangerously-ignore-permissions "$@"
+EOF
+
+chown "$DEVELOPER_USER:$DEVELOPER_USER" "/home/$DEVELOPER_USER/bin/claude_danger.sh"
+chmod 700 "/home/$DEVELOPER_USER/bin/claude_danger.sh"
+log_info "Created claude_danger.sh with 700 permissions"
+
 # Step 10: Clean up
 log_info "Step 10: Cleaning up..."
 apt autoremove -y
