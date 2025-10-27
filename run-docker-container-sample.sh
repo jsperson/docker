@@ -13,7 +13,7 @@ MOUNT_PATH_IN_CONTAINER="/home/${USER_IN_CONTAINER}/host"  # Mounts to ~/host in
 # Ports to expose (space-separated list of port mappings)
 # Format: "host_port:container_port" or just "port" for same on both sides
 # Example: PORTS="8080:80 3000:3000 5432"
-PORTS="8080 3000"  # Modify as needed
+PORTS="3000 8000"  # Modify as needed
 
 # Check if the container exists
 CONTAINER_ID=$(docker ps -a -q -f name=$CONTAINER_NAME)
